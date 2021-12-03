@@ -27,7 +27,7 @@ fun countMaleStudents(students: List<Student>): Int {
 // gender == Gender.FEMALE
 // or gender.name == "FEMALE"
 fun avgAgeOfFemaleStudent(students: List<Student>): Double {
-    return students.filter { i -> i.gender == Gender.FEMALE }.map { i -> i.age }.average()
+    return students.asSequence().filter { i -> i.gender == Gender.FEMALE }.map { i -> i.age }.average()
 }
 
 fun getProductOfStudentAges(students: List<Student>): Int {
@@ -36,7 +36,7 @@ fun getProductOfStudentAges(students: List<Student>): Int {
 
 // ignore F Grades
 fun productOfStudentGrades(student: Student): Int {
-    return student.grades.map { i -> i.type.value }.filter { i -> i != 0 }.reduce {acc,i -> acc*i}
+    return student.grades.asSequence().map { i -> i.type.value }.filter { i -> i != 0 }.reduce {acc,i -> acc*i}
 }
 
 // region BONUS
